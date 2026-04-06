@@ -86,6 +86,10 @@ export default function Menu() {
         <AnimatePresence mode="wait">
           <motion.div
             key={category}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {filtered.map((item, index) => {
@@ -96,8 +100,7 @@ export default function Menu() {
                   className={isFeaturedCard ? 'md:col-span-2' : ''}
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ delay: index * 0.07, duration: 0.4 }}
+                  transition={{ delay: index * 0.05, duration: 0.4 }}
                 >
                   <ProductCard
                     {...item}
